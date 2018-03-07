@@ -1,4 +1,4 @@
 set -e
 
 echo "installing $@ (accepting terms)"
-yes | ./tools/bin/sdkmanager --install $@
+yes | $ANDROID_HOME/tools/bin/sdkmanager --install $@
