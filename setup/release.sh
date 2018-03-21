@@ -2,6 +2,9 @@ set -e
 
 APK=${1?"need path to unsigned apk file as first parameter"}
 a=${KEY_FILE?"key store file not specified"}
+a=${KEY_STORE_PASS?"key store password not specified"}
+KEY_PASSWORD=${KEY_PASSWORD-$KEY_STORE_PASS}
+
 [ ! -f $APK ] && (echo "apk file not found: $APK in $(pwd)" >&2 ; exit 1)
 [ ! -f $KEY_FILE ] && (echo "keystore file not found: $KEY_FILE in $(pwd)" >&2 ; exit 1)
 
@@ -14,6 +17,6 @@ ALIGNED=$NAME-aligned.apk
 SIGNED=$NAME-signed.apk
 
 $BUILD_TOOLS_DIR/zipalign -v -p 4 $APK $ALIGNED
-$BUILD_TOOLS_DIR/apksigner sign -v --ks $KEY_FILE --out $SIGNED $ALIGNED
+$BUILD_TOOLS_DIR/apksigner sign -v --ks $KEY_FILE --ks-pass pass:$KEY_STORE_PASS --key-pass pass:$KEY_PASSWORD --out $SIGNED $ALIGNED
 
 echo "created: $SIGNED"
