@@ -9,5 +9,11 @@ ANDROID_BUILD_TOOLS_VERSION=$(ls -1r $ANDROID_HOME/build-tools/ | grep -v '\-pre
 BUILD_TOOLS_DIR=$ANDROID_HOME/build-tools/$ANDROID_BUILD_TOOLS_VERSION
 echo "using build-tools $ANDROID_BUILD_TOOLS_VERSION from $BUILD_TOOLS_DIR"
 
-$BUILD_TOOLS_DIR/zipalign -v -p 4 $APK aligned.apk
-$BUILD_TOOLS_DIR/apksigner sign -v --ks $KEY_FILE --out signed.apk aligned.apk
+NAME=$(echo "${APK%.*}" | sed -e 's#-unsigned##')
+ALIGNED=$NAME-aligned.apk
+SIGNED=$NAME-signed.apk
+
+$BUILD_TOOLS_DIR/zipalign -v -p 4 $APK $ALIGNED
+$BUILD_TOOLS_DIR/apksigner sign -v --ks $KEY_FILE --out $SIGNED $ALIGNED
+
+echo "created: $SIGNED"
