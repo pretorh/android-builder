@@ -1,4 +1,7 @@
 set -e
 
-echo "installing $@ (accepting terms)"
-yes | $ANDROID_HOME/tools/bin/sdkmanager --install $@
+echo "accepting licenses"
+yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
+
+echo "installing $@"
+$ANDROID_HOME/tools/bin/sdkmanager $@
