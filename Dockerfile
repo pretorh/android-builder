@@ -13,4 +13,4 @@ COPY scripts/ scripts/
 
 # setup building from source
 WORKDIR /src/
-CMD gradle assemble
+CMD gradle assembleRelease
