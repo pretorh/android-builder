@@ -9,4 +9,5 @@ WORKDIR /src/
 CMD gradle assembleRelease
 
 # install sdk tools and gradle
-RUN install-base.sh 3859397 4.6
+# get versions from https://developer.android.com/studio/#downloads and https://gradle.org/releases/
+RUN install-base.sh 4333796 5.3
