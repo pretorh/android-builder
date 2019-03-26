@@ -4,6 +4,7 @@ set -e
 SDK_VERSION=${1?"sdk version missing"}
 GRADLE_VERSION=${2?"gradle version missing"}
 shift; shift
+cd "$ANDROID_HOME"
 
 echo "installing sdk tools $SDK_VERSION"
 wget --continue "https://dl.google.com/android/repository/sdk-tools-linux-$SDK_VERSION.zip"
