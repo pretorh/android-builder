@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -e
 
-suffix=$(date --iso-8601)
+suffix=$(date +%Y-%m-%d)
 
 docker pull pretorh/android-builder:base
 docker build \
