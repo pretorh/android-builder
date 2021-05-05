@@ -8,4 +8,4 @@ COPY scripts/ $ANDROID_HOME/scripts/
 
 # install sdk tools and gradle
 # get versions from https://developer.android.com/studio/#downloads and https://gradle.org/releases/
-RUN install-base.sh 6200805 6.2.1
+RUN install-base.sh 7302050 7.0
