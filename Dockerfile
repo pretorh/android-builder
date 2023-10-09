@@ -1,4 +1,5 @@
-FROM openjdk:11-jdk
+FROM amazoncorretto:11-al2023-jdk
+RUN yum install unzip --assumeyes
 
 WORKDIR /src/
 CMD gradle assembleRelease bundleRelease
