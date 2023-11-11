@@ -1,4 +1,4 @@
-FROM amazoncorretto:11-al2023-jdk
+FROM amazoncorretto:17-al2023-jdk
 RUN yum install unzip --assumeyes
 
 WORKDIR /src/
